@@ -24,7 +24,7 @@ $(() => {
   });
 });
 // Array of iframe IDs
-const iframeIds = ['bear', 'nerfgun', 'scissors','sunglasses','redbox','ledlight','stapler','wirecutters','usbplug'];
+const iframeIds = ['nov22', 'nov27', 'dec07','dec12','dec17','dec22','dec28','jan02','jan07', 'jan12'];
 const videoIds = ['bear_video', 'nerfgun_video', 'redbox_video', 'scissors_video', 'sunglasses_video', 'ledlight_video', 'stapler_video', 'wirecutters_video', 'usbplug_video'];
 
 // Function to show the selected iframe and hide others

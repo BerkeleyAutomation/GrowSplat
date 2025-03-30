@@ -12,7 +12,7 @@
     </script>
 
     <meta charset="utf-8" />
-    <title>Botany-Bot</title>
+    <title>GrowSplat</title>
 
     <!-- TODO double check these are updated -->
     <!-- Website Metadata -->
@@ -104,7 +104,7 @@
                         <div style="width: 1.25em; display: inline-block"></div>
                         <a href="https://scholar.google.com/citations?user=vk2qKkYAAAAJ&hl=en" target="_blank" class="author-text">
                             Jose Luis Susa Rincon
-                        </a><sup>3</sup>
+                        </a><sup>2</sup>
                     </div>
                     <div>
                         <div style="width: 1.25em; display: inline-block"></div>
@@ -141,7 +141,7 @@
         <!-- TODO: Update arxiv/code/data link -->
         <div class="base-row add-top-padding">
             <!-- Paper -->
-            <a href="https://berkeleyautomation.github.io/Botany-Bot/" target="_blank" class="link-block">
+            <a href="https://berkeleyautomation.github.io/GrowSplat/" target="_blank" class="link-block">
                 <figure>
                     <img src="https://uploads-ssl.webflow.com/51e0d73d83d06baa7a00000f/5cab99df4998decfbf9e218e_paper-01.png"
                         alt="paper"
@@ -157,7 +157,7 @@
                 
             </a>
             <!-- Code -->
-            <a href="https://berkeleyautomation.github.io/Botany-Bot/" target="_blank" class="link-block">
+            <a href="https://berkeleyautomation.github.io/GrowSplat/" target="_blank" class="link-block">
                 <figure>
                     <img src="https://uploads-ssl.webflow.com/51e0d73d83d06baa7a00000f/5cae3b53b42ebb3dd4175a82_68747470733a2f2f7777772e69636f6e66696e6465722e636f6d2f646174612f69636f6e732f6f637469636f6e732f313032342f6d61726b2d6769746875622d3235362e706e67.png"
                         alt="code" style="max-height: 4em" />
@@ -170,7 +170,7 @@
                 </figcaption>
             </a>
             <!-- Data -->
-            <a href="https://berkeleyautomation.github.io/Botany-Bot/" target="_blank" class="link-block">
+            <a href="https://berkeleyautomation.github.io/GrowSplat/" target="_blank" class="link-block">
                 <figure>
                     <img src="data/database_icon.jpg" alt="data" style="max-height: 4em" />
                 </figure>
@@ -213,22 +213,22 @@
 
         <div class="section add-top-padding">
             <div class="base-row">
-                <img src="data/favicon.png" style="height: 40px; margin-left: 5px; margin-right: 5px; margin-top: 40px; margin-bottom: 40px;">
-                <img src="data/favicon.png" style="height: 40px; margin-left: 5px; margin-right: 5px; margin-top: 40px; margin-bottom: 40px;">
-                <img src="data/favicon.png" style="height: 40px; margin-left: 5px; margin-right: 5px; margin-top: 40px; margin-bottom: 40px;">
+                <img src="data/growsplat.png" style="height: 40px; margin-left: 5px; margin-right: 5px; margin-top: 40px; margin-bottom: 40px;">
+                <img src="data/growsplat.png" style="height: 40px; margin-left: 5px; margin-right: 5px; margin-top: 40px; margin-bottom: 40px;">
+                <img src="data/growsplat.png" style="height: 40px; margin-left: 5px; margin-right: 5px; margin-top: 40px; margin-bottom: 40px;">
             </div>
         </div> -->
 
-        <!-- <div class="section base-row add-top-padding">
+        <div class="section base-row add-top-padding">
             
 
-            <h1>4D Part Reconstruction</h1>
+            <h1>3D Gaussian Splats for Plants</h1>
             <p class="paragraph">
-                RSRD takes in <b>1) </b>a multi-view object scan and <b>2)</b> a monocular demonstration video.
-                By creating part-aware 3D representations using <a href="https://www.garfield.studio/" class="author-text" target="_blank">GARField</a> (parts, toggle for clusters) and 
-                <a href="https://github.com/facebookresearch/dinov2" class="author-text"target="_blank">DINOv2</a> (tracking SE3 pose),
-                these smartphone-captured inputs can generate these 4D reconstructions:
-            </p> -->
+                GrowSplat takes in <b>1) </b>single images from 15 static cameras and <b>2)</b> corresponding masks and <b>3)</b> a pointcloud .
+                By using a custom version of <a href="https://repo-sam.inria.fr/fungraph/3d-gaussian-splatting/" class="author-text" target="_blank">3D Gaussian Splatting</a> using <a href="https://docs.nerf.studio/nerfology/methods/splat.html" class="author-text"target="_blank">Splatfacto</a> with the  
+                <a href="https://ubc-vision.github.io/3dgs-mcmc/" class="author-text"target="_blank">Markov Chain Monte Carlo</a> strategy,
+                we generate 3D reconstructions of plants.:
+            </p>
             
             
             <!-- <div id="main-results">
@@ -283,11 +283,11 @@
                     </div>
                 </div>
             </div> -->
-            <!-- <h1 class="tldr"><b>
-                <img src="data/drag_icon.png" alt="" class="inline-image">Click and move me!<img src="data/drag_icon.png" alt="" class="inline-image">
-            </b></h1> -->
+            <h1 class="tldr"><b>
+                <img src="data/drag_icon.png" alt="" class="inline-image">Click and move the Quinoa Plants across dates!<img src="data/drag_icon.png" alt="" class="inline-image">
+            </b></h1>
             
-                <!-- <div id="iframe-container" class="iframe-container">
+                <div id="iframe-container" class="iframe-container">
                     <div class="click-and-move-overlay">
                         <h1 class="tldr">
                             <b>
@@ -298,49 +298,54 @@
                         </h1>
                     </div>
                     <iframe
-                        id="bear"
+                        id="nov22"
                         class = "iframe"
-                        data-src="https://rsrd-anonymous.github.io/build/?playbackPath=https://rsrd-anonymous.github.io/recordings/bear_animation.viser&initDistanceScale=1.1&gaussianGroupColorShuffleSeed=1"
+                        data-src="https://berkeleyautomation.github.io/GrowSplat/build/?playbackPath=https://berkeleyautomation.github.io/GrowSplat/recordings/quinoa_nov_22.viser"
                     ></iframe>
                     <iframe
-                        id = "nerfgun"
+                        id = "nov27"
                         class = "iframe"
-                        data-src="https://rsrd-anonymous.github.io/build/?playbackPath=https://rsrd-anonymous.github.io/recordings/nerfgun_animation.viser&gaussianGroupColorShuffleSeed=3"
+                        data-src="https://berkeleyautomation.github.io/GrowSplat/build/?playbackPath=https://berkeleyautomation.github.io/GrowSplat/recordings/quinoa_nov_27.viser"
                     ></iframe>
                     <iframe
-                        id = "redbox"  
+                        id = "dec07"  
                         class = "iframe"
-                        data-src="https://rsrd-anonymous.github.io/build/?playbackPath=https://rsrd-anonymous.github.io/recordings/red_box_animation.viser&gaussianGroupColorShuffleSeed=13"
+                        data-src="https://berkeleyautomation.github.io/GrowSplat/build/?playbackPath=https://berkeleyautomation.github.io/GrowSplat/recordings/quinoa_dec_07.viser"
                     ></iframe>
                     <iframe
-                        id = "scissors"  
+                        id = "dec12"  
                         class = "iframe"
-                        data-src="https://rsrd-anonymous.github.io/build/?playbackPath=https://rsrd-anonymous.github.io/recordings/scissors_animation.viser&initDistanceScale=1.1&gaussianGroupColorShuffleSeed=4"
+                        data-src="https://berkeleyautomation.github.io/GrowSplat/build/?playbackPath=https://berkeleyautomation.github.io/GrowSplat/recordings/quinoa_dec_12.viser"
                     ></iframe>
                     <iframe
-                        id = "sunglasses"  
+                        id = "dec17"  
                         class = "iframe"
-                        data-src="https://rsrd-anonymous.github.io/build/?playbackPath=https://rsrd-anonymous.github.io/recordings/sunglasses_animation.viser&initDistanceScale=1.2&gaussianGroupColorShuffleSeed=0"
+                        data-src="https://berkeleyautomation.github.io/GrowSplat/build/?playbackPath=https://berkeleyautomation.github.io/GrowSplat/recordings/quinoa_dec_17.viser&initDistanceScale=0.6"
                     ></iframe>
                     <iframe
-                        id="ledlight"
+                        id="dec22"
                         class = "iframe"
-                        data-src="https://rsrd-anonymous.github.io/build/?playbackPath=https://rsrd-anonymous.github.io/recordings/led_light.viser&initDistanceScale=1.3&gaussianGroupColorShuffleSeed=5"
+                        data-src="https://berkeleyautomation.github.io/GrowSplat/build/?playbackPath=https://berkeleyautomation.github.io/GrowSplat/recordings/quinoa_dec_22.viser&initDistanceScale=0.8"
                     ></iframe>
                     <iframe
-                    id="stapler"
+                    id="dec28"
                         class = "iframe"
-                        data-src="https://rsrd-anonymous.github.io/build/?playbackPath=https://rsrd-anonymous.github.io/recordings/stapler.viser&gaussianGroupColorShuffleSeed=4"
+                        data-src="https://berkeleyautomation.github.io/GrowSplat/build/?playbackPath=https://berkeleyautomation.github.io/GrowSplat/recordings/quinoa_dec_28.viser&initDistanceScale=0.8"
                     ></iframe>
                     <iframe
-                    id="usbplug"
+                    id="jan02"
                         class = "iframe"
-                        data-src="https://rsrd-anonymous.github.io/build/?playbackPath=https://rsrd-anonymous.github.io/recordings/usb_plug.viser&gaussianGroupColorShuffleSeed=3"
+                        data-src="https://berkeleyautomation.github.io/GrowSplat/build/?playbackPath=https://berkeleyautomation.github.io/GrowSplat/recordings/quinoa_jan_07.viser&initDistanceScale=0.9"
                     ></iframe>
                     <iframe
-                    id="wirecutters"
+                    id="jan07"
                         class = "iframe"
-                        data-src="https://rsrd-anonymous.github.io/build/?playbackPath=https://rsrd-anonymous.github.io/recordings/wirecutters.viser&initDistanceScale=1.4&gaussianGroupColorShuffleSeed=9"
+                        data-src="https://berkeleyautomation.github.io/GrowSplat/build/?playbackPath=https://berkeleyautomation.github.io/GrowSplat/recordings/quinoa_jan_02.viser"
+                    ></iframe>
+                    <iframe
+                    id="jan12"
+                        class = "iframe"
+                        data-src="https://berkeleyautomation.github.io/GrowSplat/build/?playbackPath=https://berkeleyautomation.github.io/GrowSplat/recordings/quinoa_jan_12.viser"
                     ></iframe>
                 </div>
                 <div style="position: relative; display: flex;">
@@ -348,32 +353,33 @@
                         &#8249;
                     </button>
                     <div class="results-slide-row" id="results-objs-scroll">
-                        <div data-img-src="data/thumbnails/bear_zoomed.jpg" data-id="bear-thumb" data-label="Bear"></div>
-                        <div data-img-src="data/thumbnails/nerfgun_zoomed.jpg" data-id="nerfgun-thumb" data-label="Nerfgun"></div>
-                        <div data-img-src="data/thumbnails/red_box_zoomed.jpg" data-id="redbox-thumb" data-label="Box"></div>
-                        <div data-img-src="data/thumbnails/scissors_zoomed.jpg" data-id="scissors-thumb" data-label="Scissors"></div>
-                        <div data-img-src="data/thumbnails/sunglasses_zoomed.jpg" data-id="sunglasses-thumb" data-label="Sunglasses"></div>
-                        <div data-img-src="data/thumbnails/led_light_zoomed.jpg" data-id="ledlight-thumb" data-label="LED Light"></div>
-                        <div data-img-src="data/thumbnails/stapler_zoomed.jpg" data-id="stapler-thumb" data-label="Stapler"></div>
-                        <div data-img-src="data/thumbnails/wirecutter_zoomed.jpg" data-id="wirecutters-thumb" data-label="Wirecutters"></div>
-                        <div data-img-src="data/thumbnails/usb_plug_zoomed.jpg" data-id="usbplug-thumb" data-label="USB Plug"></div>
+                        <div data-img-src="data/quinoa/thumbnails/nov22_zoomed.jpg" data-id="nov22-thumb" data-label="November 22"></div>
+                        <div data-img-src="data/quinoa/thumbnails/nov27_zoomed.jpg" data-id="nov27-thumb" data-label="November 27"></div>
+                        <div data-img-src="data/quinoa/thumbnails/dec07_zoomed.jpg" data-id="dec07-thumb" data-label="December 07"></div>
+                        <div data-img-src="data/quinoa/thumbnails/dec12_zoomed.jpg" data-id="dec12-thumb" data-label="December 12"></div>
+                        <div data-img-src="data/quinoa/thumbnails/dec17_zoomed.jpg" data-id="dec17-thumb" data-label="December 17"></div>
+                        <div data-img-src="data/quinoa/thumbnails/dec22_zoomed.jpg" data-id="dec22-thumb" data-label="December 22"></div>
+                        <div data-img-src="data/quinoa/thumbnails/dec28_zoomed.jpg" data-id="dec28-thumb" data-label="December 28"></div>
+                        <div data-img-src="data/quinoa/thumbnails/jan02_zoomed.jpg" data-id="jan02-thumb" data-label="January 02"></div>
+                        <div data-img-src="data/quinoa/thumbnails/jan07_zoomed.jpg" data-id="jan07-thumb" data-label="January 07"></div>
+                        <div data-img-src="data/quinoa/thumbnails/jan12_zoomed.jpg" data-id="jan12-thumb" data-label="January 12"></div>
                     </div>
                     <button class="results-slide-arrow" id="results-slide-arrow-next" onclick="results_slide_right()">
                         &#8250;
                     </button>
                 </div>
             </div> 
-            <p class="tldr">These 4D reconstructions are rendered in-browser! If you think that's cool, check out <a href="https://viser.studio/latest/" class="author-text" target="_blank">Viser</a>!</p>
+            <p class="tldr">These 3D reconstructions are rendered in-browser! If you think that's cool, check out <a href="https://viser.studio/latest/" class="author-text" target="_blank">Viser</a>!</p>
             
         </div>
 
         <div class="section add-top-padding">
             <div class="base-row">
-                <img src="data/favicon.png" style="height: 40px; margin-left: 5px; margin-right: 5px; margin-top: 40px; margin-bottom: 40px;">
-                <img src="data/favicon.png" style="height: 40px; margin-left: 5px; margin-right: 5px; margin-top: 40px; margin-bottom: 40px;">
-                <img src="data/favicon.png" style="height: 40px; margin-left: 5px; margin-right: 5px; margin-top: 40px; margin-bottom: 40px;">
+                <img src="data/growsplat.png" style="height: 40px; margin-left: 5px; margin-right: 5px; margin-top: 40px; margin-bottom: 40px;">
+                <img src="data/growsplat.png" style="height: 40px; margin-left: 5px; margin-right: 5px; margin-top: 40px; margin-bottom: 40px;">
+                <img src="data/growsplat.png" style="height: 40px; margin-left: 5px; margin-right: 5px; margin-top: 40px; margin-bottom: 40px;">
             </div>
-        </div> -->
+        </div>
 
         <!-- <div class="section base-row add-top-padding">
             <h1>Robot Motion Retargeting</h1>
@@ -392,7 +398,7 @@
                     </h1>
                 </div>
                 <iframe class="iframe show"
-                    src="https://rsrd-anonymous.github.io/build/?playbackPath=https://rsrd-anonymous.github.io/recordings/robot_bear.viser&initDistanceScale=1.5&gaussianGroupColorShuffleSeed=1"
+                    src="https://berkeleyautomation.github.io/GrowSplat/build/?playbackPath=https://berkeleyautomation.github.io/GrowSplat/recordings/robot_bear.viser&initDistanceScale=1.5&gaussianGroupColorShuffleSeed=1"
                 ></iframe>
             </div>
             <p class="paragraph">
@@ -491,9 +497,9 @@
         <!-- Just for vertical spacing... -->
         <!-- <div class="section add-top-padding">
             <div class="base-row">
-                <img src="data/favicon.png" style="height: 40px; margin-left: 5px; margin-right: 5px; margin-top: 40px; margin-bottom: 40px;">
-                <img src="data/favicon.png" style="height: 40px; margin-left: 5px; margin-right: 5px; margin-top: 40px; margin-bottom: 40px;">
-                <img src="data/favicon.png" style="height: 40px; margin-left: 5px; margin-right: 5px; margin-top: 40px; margin-bottom: 40px;">
+                <img src="data/growsplat.png" style="height: 40px; margin-left: 5px; margin-right: 5px; margin-top: 40px; margin-bottom: 40px;">
+                <img src="data/growsplat.png" style="height: 40px; margin-left: 5px; margin-right: 5px; margin-top: 40px; margin-bottom: 40px;">
+                <img src="data/growsplat.png" style="height: 40px; margin-left: 5px; margin-right: 5px; margin-top: 40px; margin-bottom: 40px;">
             </div>
         </div>
          </div>
@@ -580,9 +586,9 @@
             <!-- Just for vertical spacing... -->
         <!-- <div class="section add-top-padding">
             <div class="base-row">
-                <img src="data/favicon.png" style="height: 40px; margin-left: 5px; margin-right: 5px; margin-top: 40px; margin-bottom: 40px;">
-                <img src="data/favicon.png" style="height: 40px; margin-left: 5px; margin-right: 5px; margin-top: 40px; margin-bottom: 40px;">
-                <img src="data/favicon.png" style="height: 40px; margin-left: 5px; margin-right: 5px; margin-top: 40px; margin-bottom: 40px;">
+                <img src="data/growsplat.png" style="height: 40px; margin-left: 5px; margin-right: 5px; margin-top: 40px; margin-bottom: 40px;">
+                <img src="data/growsplat.png" style="height: 40px; margin-left: 5px; margin-right: 5px; margin-top: 40px; margin-bottom: 40px;">
+                <img src="data/growsplat.png" style="height: 40px; margin-left: 5px; margin-right: 5px; margin-top: 40px; margin-bottom: 40px;">
             </div>
         </div> --> -->
         <!-- <div class="section base-row add-top-padding">
