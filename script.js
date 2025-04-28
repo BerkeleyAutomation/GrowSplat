@@ -7,6 +7,8 @@ $(() => {
       const $input = $("<button>", {
         class: "thumbnail-btn",
         id: $child.data("id"),
+        "data-type": $child.data("type"),
+        "data-section": $child.data("section")
       });
       const $img = $("<img>", {
         class: "thumbnails",
@@ -24,7 +26,9 @@ $(() => {
   });
 });
 // Array of iframe IDs
-const iframeIds = ['nov22', 'nov27', 'dec07','dec12','dec17','dec22','dec28','jan02','jan07', 'jan12', 'feb13', 'feb16', 'feb22', 'feb26', 'mar1', 'mar5', 'mar9'];
+const iframeIds = ['nov22', 'nov27', 'dec07','dec12','dec17','dec22','dec28','jan02','jan07', 'jan12', 'feb13', 'feb16', 'feb22', 'feb26', 'mar01', 'mar05', 'mar09'];
+const quinoaImageIds = ['nov22_marvin', 'nov27_marvin', 'dec07_marvin','dec12_marvin','dec17_marvin','dec22_marvin','dec28_marvin','jan02_marvin','jan07_marvin', 'jan12_marvin'];
+const sequoiaImageIds = ['feb13_marvin', 'feb16_marvin', 'feb22_marvin', 'feb26_marvin', 'mar01_marvin', 'mar05_marvin', 'mar09_marvin'];
 const videoIds = ['bear_video', 'nerfgun_video', 'redbox_video', 'scissors_video', 'sunglasses_video', 'ledlight_video', 'stapler_video', 'wirecutters_video', 'usbplug_video'];
 
 // Function to show the selected iframe and hide others
@@ -59,6 +63,33 @@ function showVideo(videoId) {
     }
   });
 }
+// Function to show the selected Quinoa image and hide others
+function showQuinoaImage(imageId) {
+  quinoaImageIds.forEach(id => {
+    const image = document.getElementById(id);
+    if (image) {
+      if (id === imageId) {
+        image.classList.add('show');
+      } else {
+        image.classList.remove('show');
+      }
+    }
+  });
+}
+
+// Function to show the selected Sequoia image and hide others
+function showSequoiaImage(imageId) {
+  sequoiaImageIds.forEach(id => {
+    const image = document.getElementById(id);
+    if (image) {
+      if (id === imageId) {
+        image.classList.add('show');
+      } else {
+        image.classList.remove('show');
+      }
+    }
+  });
+}
 
 let currentThumbnail = 0;
 let thumbnailFromIndex = {}
@@ -72,13 +103,29 @@ function setupThumbnailClickEvents() {
     $(thumbnail).click(function() {
       const buttonId = $(thumbnail).attr('id');
       if (buttonId === undefined) return;
+
+
       const iframeId = buttonId.replace('-thumb', '');
+      const type = $(thumbnail).data('type');
+      const section = $(thumbnail).data('section');
 
       currentThumbnail = index;
       $('.thumbnail-btn').css('opacity', '');
       $(thumbnail).css('opacity', '1.0');
+      
       showIframe(iframeId);
-      showVideo(iframeId + '_video');
+      
+
+      if (type === 'video') {
+        showVideo(iframeId + '_video');
+      } else if (type === 'image') {
+        if (section === 'quinoa') {
+          showQuinoaImage(iframeId + '_marvin');
+        } else if (section === 'sequoia') {
+          showSequoiaImage(iframeId + '_marvin');
+        }
+      }
+      
 
       // Make sure the new thumbnail is visible.
       const slider_window = document.getElementById('results-objs-scroll');
@@ -113,6 +160,13 @@ function initializePage() {
   }
   if (videoIds.length > 0) {
     showVideo(videoIds[0]);
+  }
+
+  if (quinoaImageIds.length > 0) {
+    showQuinoaImage(quinoaImageIds[0]);
+  }
+  if (sequoiaImageIds.length > 0) {
+    showSequoiaImage(sequoiaImageIds[0]);
   }
 }
 // Run initialization when the DOM is fully loaded
