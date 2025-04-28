@@ -24,7 +24,7 @@ $(() => {
   });
 });
 // Array of iframe IDs
-const iframeIds = ['nov22', 'nov27', 'dec07','dec12','dec17','dec22','dec28','jan02','jan07', 'jan12'];
+const iframeIds = ['nov22', 'nov27', 'dec07','dec12','dec17','dec22','dec28','jan02','jan07', 'jan12', 'feb13', 'feb16', 'feb22', 'feb26', 'mar1', 'mar5', 'mar9'];
 const videoIds = ['bear_video', 'nerfgun_video', 'redbox_video', 'scissors_video', 'sunglasses_video', 'ledlight_video', 'stapler_video', 'wirecutters_video', 'usbplug_video'];
 
 // Function to show the selected iframe and hide others

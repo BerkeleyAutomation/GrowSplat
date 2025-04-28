@@ -284,9 +284,79 @@
                 </div>
             </div> -->
             <h1 class="tldr"><b>
+                <img src="data/drag_icon.png" alt="" class="inline-image">Click and move the Sequoia Plants across dates! You can zoom in/out, move up/down, and move left/right.<img src="data/drag_icon.png" alt="" class="inline-image">
+            </b></h1>
+
+                <div id="iframe-container" class="iframe-container">
+                    <div class="click-and-move-overlay">
+                        <h1 class="tldr">
+                            <b>
+                                <img src="data/drag_icon.png" alt="" class="inline-image">
+                                Click and move me!
+                                <img src="data/drag_icon.png" alt="" class="inline-image">
+                            </b>
+                        </h1>
+                    </div>
+                    <iframe
+                        id="feb13"
+                        class = "iframe"
+                        data-src="https://berkeleyautomation.github.io/GrowSplat/build/?playbackPath=https://berkeleyautomation.github.io/GrowSplat/recordings/sequoia_feb_13.viser&initDistanceScale=0.4"
+                    ></iframe>
+                    <iframe
+                        id = "feb16"
+                        class = "iframe"
+                        data-src="https://berkeleyautomation.github.io/GrowSplat/build/?playbackPath=https://berkeleyautomation.github.io/GrowSplat/recordings/sequoia_feb_16.viser&initDistanceScale=0.4"
+                    ></iframe>
+                    <iframe
+                        id = "feb22"  
+                        class = "iframe"
+                        data-src="https://berkeleyautomation.github.io/GrowSplat/build/?playbackPath=https://berkeleyautomation.github.io/GrowSplat/recordings/sequoia_feb_22.viser&initDistanceScale=0.4"
+                    ></iframe>
+                    <iframe
+                        id = "feb26"  
+                        class = "iframe"
+                        data-src="https://berkeleyautomation.github.io/GrowSplat/build/?playbackPath=https://berkeleyautomation.github.io/GrowSplat/recordings/sequoia_feb_26.viser&initDistanceScale=0.4"
+                    ></iframe>
+                    <iframe
+                        id = "mar1"  
+                        class = "iframe"
+                        data-src="https://berkeleyautomation.github.io/GrowSplat/build/?playbackPath=https://berkeleyautomation.github.io/GrowSplat/recordings/sequoia_mar_1.viser&initDistanceScale=0.43"
+                    ></iframe>
+                    <iframe
+                        id = "mar5"  
+                        class = "iframe"
+                        data-src="https://berkeleyautomation.github.io/GrowSplat/build/?playbackPath=https://berkeleyautomation.github.io/GrowSplat/recordings/sequoia_mar_5.viser&initDistanceScale=0.45"
+                    ></iframe>
+                    <iframe
+                        id = "mar9"  
+                        class = "iframe"
+                        data-src="https://berkeleyautomation.github.io/GrowSplat/build/?playbackPath=https://berkeleyautomation.github.io/GrowSplat/recordings/sequoia_mar_9.viser&initDistanceScale=0.48"
+                    ></iframe>
+                </div>
+                <div style="position: relative; display: flex;">
+                    <button class="results-slide-arrow" id="results-slide-arrow-prev" onclick="results_slide_left()">
+                        &#8249;
+                    </button>
+                    <div class="results-slide-row" id="results-objs-scroll">
+                        <div data-img-src="data/sequoia/thumbnails/feb13_zoomed.jpg" data-id="feb13-thumb" data-label="February 13"></div>
+                        <div data-img-src="data/sequoia/thumbnails/feb16_zoomed.jpg" data-id="feb16-thumb" data-label="February 16"></div>
+                        <div data-img-src="data/sequoia/thumbnails/feb22_zoomed.jpg" data-id="feb22-thumb" data-label="February 22"></div>
+                        <div data-img-src="data/sequoia/thumbnails/feb26_zoomed.jpg" data-id="feb26-thumb" data-label="February 26"></div>
+                        <div data-img-src="data/sequoia/thumbnails/mar1_zoomed.jpg" data-id="mar1-thumb" data-label="March 1"></div>
+                        <div data-img-src="data/sequoia/thumbnails/mar5_zoomed.jpg" data-id="mar5-thumb" data-label="March 5"></div>
+                        <div data-img-src="data/sequoia/thumbnails/mar9_zoomed.jpg" data-id="mar9-thumb" data-label="March 9"></div>
+                    </div>
+                    <button class="results-slide-arrow" id="results-slide-arrow-next" onclick="results_slide_right()">
+                        &#8250;
+                    </button> 
+                </div> 
+
+
+
+            <h1 class="tldr"><b>
                 <img src="data/drag_icon.png" alt="" class="inline-image">Click and move the Quinoa Plants across dates! You can zoom in/out, move up/down, and move left/right.<img src="data/drag_icon.png" alt="" class="inline-image">
             </b></h1>
-            
+
                 <div id="iframe-container" class="iframe-container">
                     <div class="click-and-move-overlay">
                         <h1 class="tldr">
@@ -328,22 +398,22 @@
                         data-src="https://berkeleyautomation.github.io/GrowSplat/build/?playbackPath=https://berkeleyautomation.github.io/GrowSplat/recordings/quinoa_dec_22.viser&initDistanceScale=0.8"
                     ></iframe>
                     <iframe
-                    id="dec28"
+                        id="dec28"
                         class = "iframe"
                         data-src="https://berkeleyautomation.github.io/GrowSplat/build/?playbackPath=https://berkeleyautomation.github.io/GrowSplat/recordings/quinoa_dec_28.viser&initDistanceScale=0.8"
                     ></iframe>
                     <iframe
-                    id="jan02"
+                        id="jan02"
                         class = "iframe"
                         data-src="https://berkeleyautomation.github.io/GrowSplat/build/?playbackPath=https://berkeleyautomation.github.io/GrowSplat/recordings/quinoa_jan_07.viser&initDistanceScale=0.9"
                     ></iframe>
                     <iframe
-                    id="jan07"
+                        id="jan07"
                         class = "iframe"
                         data-src="https://berkeleyautomation.github.io/GrowSplat/build/?playbackPath=https://berkeleyautomation.github.io/GrowSplat/recordings/quinoa_jan_02.viser"
                     ></iframe>
                     <iframe
-                    id="jan12"
+                        id="jan12"
                         class = "iframe"
                         data-src="https://berkeleyautomation.github.io/GrowSplat/build/?playbackPath=https://berkeleyautomation.github.io/GrowSplat/recordings/quinoa_jan_12.viser"
                     ></iframe>
