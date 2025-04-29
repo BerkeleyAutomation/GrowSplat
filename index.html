@@ -604,67 +604,94 @@
             <img src="data/4ddpm_ablation.jpg" style="max-width: 90%" />
          </div> -->
 
-        <!-- <div class="section base-row add-top-padding">
-            <h1>Retargeting Robot Trajectory</h1>
+        <div class="section base-row add-top-padding">
+            <h1>Plant Registration</h1>
+            <br>
+            <p class="paragraph">         
+            
+                <ol class="paragraph">
+                    We propose the algorithm framework as follows:
+                    <li>
+                    <b>Point Cloud Initialization and Preprocessing</b>:
+                    Gaussian splats provide a dense point cloud with an associated uncertainty model; however, using the raw data directly
+                    leads to excessive computational overhead and introduces outliers stemming from the uncertainty. To address these
+                    challenges, we propose a point cloud downsampling pipeline for Gaussian splats that applies three principal filtering con-
+                    ditions with Gaussian splats properties to ensure physically valid and well-conditioned data. First, we discard splats with
+                    excessively large or small scales by inspecting their log-scale range, thus preventing skewed modeling. Second, we
+                    compute the scale ratio to remove overly elongated splats
+                    that do not faithfully represent plant geometry. Lastly, we
+                    validate the rotation parameters by checking the norm of the
+                    associated quaternion to reduce numerical errors. After this
+                    filtering process, we estimate surface normals to support the
+                    computation of Fast Point Feature Histograms (FPFH)[31].
+                    These FPFH descriptors capture local geometry and serve as
+                    key features in subsequent alignment steps.
+                    </li><br>
+                    <li>
+                    <b>Global Registration (Coarse Alignment)</b>: 
+                    For an initial, coarse alignment of point clouds across different time steps, we adopt a feature-based matching approach inspired by Fast Global Registration (FGR). Specifically, we first compute FPFH for each point in both the reference point
+                    cloud Pref and the temporal point cloud P<sub>tk </sub> . The FPFH
+                    descriptors encode local geometric properties (e.g., curvature,
+                    normal variation) that are invariant to rigid transformations,
+                    facilitating the discovery of putative correspondences be-
+                    tween the two point clouds.We then utilize a RANSAC-
+                    based scheme for robust outlier rejection. In each iteration
+                    of RANSAC, a minimal set of correspondences is randomly
+                    sampled, and an initial rigid transformation is estimated.
+                    The transform is evaluated against the entire set of FPFH
+                    correspondences to identify and reject outliers. We set the
+                    convergence condition to be (3) or the maximum number of
+                    iterations reach the threshold. The resulting transformation
+                    Ttk approximately aligns Ptk to Pref . Once we have a
+                    candidate set of correspondences that survive RANSAC, we
+                    refine them using the optimization procedure proposed in
+                    FGR, which employs a robust objective to handle remaining
+                    outliers more gracefully than pure least-squares approaches.
+                    By combining FPFH-based matching, RANSAC filtering,
+                    and FGR optimization, the final output of this global reg-
+                    istration step is a coarse but sufficiently accurate alignment
+                    of Ptk to Pref . This ensures a robust starting configuration
+                    for subsequent local (fine) registration.
+                    </li><br>
+                    <li>
+                    <b>Fine Registration (Local Alignment)</b>:
+                    Following coarse
+                    alignment, we refine each temporally acquired point cloud
+                    using standard Iterative Closest Point (ICP), which iteratively
+                    refines the rigid transformation by minimizing the Euclidean
+                    distance between matched points. To further improve alignment, we employ Colored ICP, which incorporates photomet-
+                    ric consistency by minimizing color discrepancies between corresponding points. This color term helps disambiguate
+                    similar geometric features, particularly in organic structures
+                    with subtle variations.
+                    </li>
+                </ol>
+            </p>
+            </div>
+        
+        <div class="section base-row add-top-padding">
+            <h1>View Rendering</h1>
             <p class="paragraph">
-                With the recovered 3D part motion and the object placed in the robot workspace,
-                RSRD now can <i>do</i> the motion demonstrated in the video.
-                Motions can be retargeted regardless of object pose!
-                Three main takeaways are:
+                We use the registered plant frame and the reconstructed Gaussian splats to render rotating viewing angles. The final output is a temporally consistent sequence of 3D point clouds and video that best captures the growth dynamics of the plant
+                <br>
+                <img src="data/rotating-view.png" style="max-width: 90%" />
+
+            </p>
+            </div>
+
+        <div class="section base-row add-top-padding">
+            <h1>Experiments</h1>
+            <p class="paragraph">
+                We evaluated GrowSplat with plant species Sequoia and Quinoa that were captured by NPEC Maxi-Marvin system with longest time series with 55 time points over 76 days
                 <ol class="paragraph">
                     <li>
-                        <b>Hand-Guided Part Selection</b>:
-                        From the 4D motion reconstruction, RSRD must automatically detect which parts need to be manipulated to reproduce it.
-                        Not all moving parts are relevant, like the wooden figurine's hand.
-                        We use hand position as prior for part selection (using <a class="author-text" href="https://geopavlakos.github.io/hamer/">HaMeR</a>),
-                        but <i>do not</i> use the hand contact points, as explained in (2).
-                        <img src="data/rsrd_hands.jpg" style="max-width: 90%" />
+                    <b>Dataset</b>:<br>
+                    <img src="data/dataset.png" style="max-width: 90%" />
                     </li><br>
                     <li>
-                        <b>Part-centric Grasps</b>: 
-                        We cannot use detected finger contact locations as grasp points, as they may either jitter or become kinematically unreachable.
-                        Also, a robot must remain rigidly attached to the object part during the entire motion, whileas
-                        humans can do so much more &mdash; change contact points by shuffling fingers, or do prehensile motions.
-                        <div class="video-container" style="max-width: 600px;">
-                            <div class="video-item">
-                                <video autoplay muted loop playsinline>
-                                    <source src="data/nerfgun_graspsearch.mp4" type="video/mp4">
-                                    Your browser does not support the video tag.
-                                </video>
-                            </div>
-                        </div>
+                    <b>Results</b>:<br>
+                    Top row: registration result for Sequoia. Bottom row: registration result for Quinoa. We use the blue to indicate the point cloud in the earlier date and the green indicate the point cloud in the later date.
+                    <img src="data/example-registration.png" style="max-width: 90%" />
                     </li><br>
-                    <li>
-                        <b>Bimanual Robot Pose Optimization</b>:
-                        We exhaustively search for collision-free, kinematically feasible robot trajectories: we first use
-                        <a href="https://github.com/brentyi/jaxls" class="author-text" target="_blank">jaxls</a>
-                        to optimize a robot trajectory to fit the robot end-effector waypoints using a Levenberg-Marquardt solver.
-                        Then, we use
-                        <a href="https://curobo.org/" class="author-text" target="_blank">cuRobo</a>
-                        to plan collision-free robot approach motions and for all collision avoidance checks.
-                        <br>
-                        Below we vary the object pose, and visualize below some bimanual IK solutions for each object motion.
-                        <div class="video-container">
-                            <div class="video-item">
-                                <video autoplay muted loop playsinline>
-                                    <source src="data/nerfgun_posevary.mp4" type="video/mp4">
-                                    Your browser does not support the video tag.
-                                </video>
-                            </div>
-                            <div class="video-item">
-                                <video autoplay muted loop playsinline>
-                                    <source src="data/bear_posevary.mp4" type="video/mp4">
-                                    Your browser does not support the video tag.
-                                </video>
-                            </div>
-                            <div class="video-item">
-                                <video autoplay muted loop playsinline>
-                                    <source src="data/scissors_posevary.mp4" type="video/mp4">
-                                    Your browser does not support the video tag.
-                                </video>
-                            </div>
-                        </div>
-                    </li>
                 </ol>
             </p>
             </div>
@@ -675,15 +702,11 @@
                 <img src="data/growsplat.png" style="height: 40px; margin-left: 5px; margin-right: 5px; margin-top: 40px; margin-bottom: 40px;">
                 <img src="data/growsplat.png" style="height: 40px; margin-left: 5px; margin-right: 5px; margin-top: 40px; margin-bottom: 40px;">
             </div>
-        </div> --> -->
+        </div> -->
         <!-- <div class="section base-row add-top-padding">
             <h1>Limitations and Failures</h1>
             <p class="paragraph">
-                4D monocular reconstruction is an extremely under-constrained and challenging problem, and 4D-DPM still suffers from sensitivity to demonstration viewpoint, occlusions, reconstruction quality, and more.
-                It also requires some hyper-parameter tuning of regularizers like the ARAP loss, and can frustratingly fail due to incorrect or incomplete part segmentations. More work is needed to adapt the approach for more in-the-wild videos.
-                In addition, while we show how the 4D reconstruction enables a robot to imitate with motion planning, RSRD as designed cannot scale to multiple demonstration videos of the same object, it can only mimick motion from one video. 
-                Learning to manipulate from more demonstrations, perhaps with policy learning, is an exciting future direction!
-            </p>
+                4D monocular reconstruction is an extremely under-constrained and chal<
             <p class="paragraph">
                 <b>Camera Angle Sensitivity:</b> Since RSRD uses only a single video, it can be sensitive to camera pose during the demonstration, as illustrated in the tracking failure below. 
                 The same scan of the laptop can work or fail depending on the camera angle.
